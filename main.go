@@ -51,9 +51,10 @@ func main() {
 		w.WriteHeader(http.StatusOK)
 	})
 
-	err = http.ListenAndServe(fmt.Sprintf(":%d", cfg.Port), nil)
+	// 启动 SSL 服务器
+	err = http.ListenAndServeTLS(fmt.Sprintf(":%d", cfg.Port), cfg.SSLCertFile, cfg.SSLKeyFile, nil)
 	if err != nil {
-		logger.Logger.Fatal("Server start err: %v \n", err)
+		logger.Logger.Fatal("Server start err: %v\n", err)
 		return
 	}
 }

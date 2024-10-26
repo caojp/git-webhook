@@ -16,6 +16,8 @@ type Config struct {
 	GitUsername string `yaml:"git_username"`
 	GitPassword string `yaml:"git_password"`
 	SSHKeyPath  string `yaml:"ssh_key_path"`
+	SSLCertFile string `yaml:"ssl_cert_file"`
+	SSLKeyFile  string `yaml:"ssl_key_file"`
 }
 
 // LoadConfig 加载 YAML 配置文件
