@@ -1,0 +1,10 @@
+secret: "your_secret_here"
+project_path: "/path/to/your/project"
+log_file_path: "logs/git-webhook.log"
+port: 5000
+repo_url: "https://github.com/yourusername/yourrepository.git"
+use_tag: false
+branch: "main"
+git_username: "your_username"
+git_password: "your_password"
+ssh_key_path: "/path/to/key"
