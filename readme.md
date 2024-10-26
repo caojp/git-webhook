@@ -98,12 +98,12 @@ ssh_key_path: "/path/to/key"     # SSH 密钥路径（可选）
 - **使用 curl 测试 Webhook**
   您可以使用以下 `curl` 命令来模拟 GitHub Webhook 的请求：
 
-  ```bash
-  curl -X POST http://localhost:5000/webhook \
-  -H "X-Hub-Signature-256: sha256=your_signature" \
-  -H "Content-Type: application/json" \
-  -d '{"ref": "refs/heads/main"}'
-  ```
+    ```bash  
+    payload='{"ref": "refs/heads/main", "repository": {"full_name": "example/repo"}}'
+    secret="9W1tB7hedsMtL"
+    signature="sha256=$(echo -n $payload | openssl dgst -sha256 -hmac "$secret" | sed 's/^.* //')"
+    curl -X POST http://localhost:5000/webhook -d "$payload" -H "Content-Type: application/json" -H "X-Hub-Signature-256: $signature"
+    ```
   请根据实际情况替换 `your_signature` 和请求数据。
 
 ## 贡献
